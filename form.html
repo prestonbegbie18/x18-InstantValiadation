@@ -20,7 +20,7 @@
           <div class="form-group" id="usernameGroup">
             <label for="username" class="col-sm-2 control-label">Username</label>
             <div class="col-sm-2">
-              <input type="text" id="user" class="form-control input-md"
+              <input type="username" id="user" class="form-control input-md" oninput="validateUsername();"
                   placeholder="myusername" />
               <span id="usernameError" class="control-label hidden-message">
                 Error Placeholder (hidden)
@@ -30,9 +30,9 @@
         </div> <!-- end username row /-->
         <div class="row">
           <div class="form-group" id="passwordGroup">
-            <label for="username" class="col-sm-2 control-label">Password</label>
+            <label for="password" class="col-sm-2 control-label">Password</label>
             <div class="col-sm-2">
-              <input type="password" id="pass" class="form-control input-md"
+              <input type="password" id="pass" class="form-control input-md" oninput="validatePassword();"
                   placeholder="mypassword" />
               <span id="passwordError" class="control-label hidden-message">
                 Error Placeholder (hidden)

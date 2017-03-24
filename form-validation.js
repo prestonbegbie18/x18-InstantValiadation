@@ -93,80 +93,89 @@ function register(){
 function validateUsername()
 {
   var userEntered = document.getElementById("user").value;
+  var passEntered = document.getElementById("pass").value;
   var userln = userEntered.length;
 
   if (userln >= 6){
+    document.getElementById("usernameError").innerHTML="Success!";
+    document.getElementById("usernameGroup").classList.remove("has-error");
     document.getElementById("usernameGroup").classList.add("has-success");
   } else {
     document.getElementById("usernameError").innerHTML="Username must have at least six characters.";
     document.getElementById("usernameError").classList.remove("hidden-message");
     document.getElementById("usernameError").classList.add("shown-message");
-
+    document.getElementById("usernameGroup").classList.remove("has-success");
     document.getElementById("usernameGroup").classList.add("has-error");
   }
   if(userEntered.indexOf(' ') >= 0){
     document.getElementById("usernameError").innerHTML="Username must not contain spaces.";
     document.getElementById("usernameError").classList.remove("hidden-message");
     document.getElementById("usernameError").classList.add("shown-message");
-
     document.getElementById("usernameGroup").classList.add("has-error");
   } else {
       document.getElementById("usernameGroup").classList.add("has-success");
-  }
+    }
 }
 
 function validatePassword()
 {
   var passEntered = document.getElementById("pass").value;
+  var userEntered = document.getElementById("user").value;
   var passln = passEntered.length;
 
+  if(passEntered == "password"){
+    document.getElementById("passwordError").innerHTML="Password cannot be password.";
+    document.getElementById("passwordError").classList.remove("hidden-message");
+    document.getElementById("passwordError").classList.add("shown-message");
+    document.getElementById("passwordGroup").classList.remove("has-success");
+    document.getElementById("passwordGroup").classList.add("has-error");
+  }
+  else{
+    //document.getElementById("passwordError").innerHTML="Success!";
+    document.getElementById("passwordGroup").classList.remove("has-error");
+    document.getElementById("passwordGroup").classList.add("has-success");
+  }
 
   if (passEntered == "password"){
     document.getElementById("passwordError").innerHTML="Password cannot be password.";
     document.getElementById("passwordError").classList.remove("hidden-message");
     document.getElementById("passwordError").classList.add("shown-message");
-
+    document.getElementById("passwordGroup").classList.remove("has-success");
     document.getElementById("passwordGroup").classList.add("has-error");
   } else if (passEntered == "Password"){
     document.getElementById("passwordError").innerHTML="Password cannot be Password.";
     document.getElementById("passwordError").classList.remove("hidden-message");
     document.getElementById("passwordError").classList.add("shown-message");
-
+    document.getElementById("passwordGroup").classList.remove("has-success");
     document.getElementById("passwordGroup").classList.add("has-error");
   } else {
+    document.getElementById("passwordError").innerHTML="Success!";
+    document.getElementById("passwordGroup").classList.remove("has-error");
     document.getElementById("passwordGroup").classList.add("has-success");
   }
-
-
-  if (passEntered == userEntered){
+  if (passEntered != userEntered){
+    document.getElementById("passwordError").innerHTML="Success!";
+    document.getElementById("passwordGroup").classList.remove("has-error");
+    document.getElementById("passwordGroup").classList.add("has-success");
+  } else {
     document.getElementById("passwordError").innerHTML="Password cannot be the same as Username.";
     document.getElementById("passwordError").classList.remove("hidden-message");
     document.getElementById("passwordError").classList.add("shown-message");
-
-    document.getElementById("passwordGroup").classList.add("has-error");
-  } else {
-    document.getElementById("passwordGroup").classList.add("has-success");
-  }
-
-
-  if (passln >= 6){
-    document.getElementById("passwordGroup").classList.add("has-success");
-  } else {
-    document.getElementById("passwordError").innerHTML="Password has to be 6 or more characters.";
-    document.getElementById("passwordError").classList.remove("hidden-message");
-    document.getElementById("passwordError").classList.add("shown-message");
-
+    document.getElementById("passwordGroup").classList.remove("has-success");
     document.getElementById("passwordGroup").classList.add("has-error");
   }
-
-
-  if (passln <= 20){
+  if (passln >= 6 && passln <= 20){
+    document.getElementById("passwordError").innerHTML="Success!";
+    document.getElementById("passwordGroup").classList.remove("has-error");
     document.getElementById("passwordGroup").classList.add("has-success");
+    //document.getElementById("passwordGroup").classList.add("has-success");
   } else {
-    document.getElementById("passwordError").innerHTML="Password has to be 20 or less characters.";
+    //document.getElementById("passwordGroup").classList.remove("has-success");
+    document.getElementById("passwordError").innerHTML="Password has to be 6 or more characters, but less than 20.";
     document.getElementById("passwordError").classList.remove("hidden-message");
     document.getElementById("passwordError").classList.add("shown-message");
-
+    document.getElementById("passwordGroup").classList.remove("has-success");
     document.getElementById("passwordGroup").classList.add("has-error");
+    //document.getElementById("passwordGroup").classList.remove("has-success");
   }
 }
